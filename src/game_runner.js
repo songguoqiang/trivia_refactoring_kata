@@ -2,7 +2,6 @@ var Game = require("./game");
 
 module.exports = function runGame(random) {
   random = random || Math.random;
-  var nobodyWins = false;
 
   var game = new Game();
 
@@ -10,6 +9,7 @@ module.exports = function runGame(random) {
   game.add("Pat");
   game.add("Sue");
 
+  var nobodyWins = false;
   do {
     game.roll(Math.floor(random() * 6) + 1);
 
