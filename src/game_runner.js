@@ -10,9 +10,11 @@ module.exports = function runGame(random) {
 
   let nobodyWins = false;
   do {
-    game.roll(Math.floor(random() * 6) + 1);
+    const getNumberFromDice = Math.floor(random() * 6) + 1;
+    game.roll(getNumberFromDice);
 
-    if (Math.floor(random() * 10) == 7) {
+    const shouldSimulateWrongAnswer = Math.floor(random() * 10) == 7;
+    if (shouldSimulateWrongAnswer) {
       game.wrongAnswer();
       nobodyWins = true;
     } else {
