@@ -1,6 +1,6 @@
 var Game = require("./game");
 
-module.exports = function GameRunner(random) {
+module.exports = function runGame(random) {
   random = random || Math.random;
   var nobodyWins = false;
 

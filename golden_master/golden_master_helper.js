@@ -1,4 +1,4 @@
-const GameRunner = require("../src/game_runner");
+const runGame = require("../src/game_runner");
 const fs = require("fs");
 
 // We need to control the random number generation function
@@ -36,7 +36,7 @@ function recordCurrentBehavior(seed, fileName) {
   redirectConsoleLogToFile(fileName);
 
   Math.seed = seed;
-  new GameRunner(Math.seededRandom);
+  runGame(Math.seededRandom);
 }
 
 const NUMBER_OF_MASTER_RECORDS = 10;
