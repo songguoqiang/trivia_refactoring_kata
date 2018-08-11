@@ -15,10 +15,10 @@ module.exports = function runGame(random) {
 
     const shouldSimulateWrongAnswer = Math.floor(random() * 10) == 7;
     if (shouldSimulateWrongAnswer) {
-      game.wrongAnswer();
+      game.currentPlayerAnsweredWrongly();
       nobodyWins = true;
     } else {
-      game.wasCorrectlyAnswered();
+      game.currentUserAnsweredCorrectly();
       nobodyWins = game.theCurrentPlayerDidNotWin();
     }
     game.nextPlayer();

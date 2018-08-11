@@ -116,7 +116,7 @@ module.exports = function Game() {
     }
   };
 
-  this.wasCorrectlyAnswered = function() {
+  this.currentUserAnsweredCorrectly = function() {
     if (inPenaltyBox[currentPlayer]) {
       if (isGettingOutOfPenaltyBox) {
         log("Answer was correct!!!!");
@@ -141,7 +141,7 @@ module.exports = function Game() {
     }
   };
 
-  this.wrongAnswer = function() {
+  this.currentPlayerAnsweredWrongly = function() {
     log("Question was incorrectly answered");
     log(players[currentPlayer] + " was sent to the penalty box");
     inPenaltyBox[currentPlayer] = true;
