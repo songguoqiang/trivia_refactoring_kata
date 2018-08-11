@@ -17,7 +17,7 @@ module.exports = function Game() {
     if (currentPlayer == players.length) currentPlayer = 0;
   };
 
-  const theCurrentPlayerDidNotWin = function() {
+  this.theCurrentPlayerDidNotWin = function() {
     return !(purses[currentPlayer] == 6);
   };
 
@@ -127,11 +127,6 @@ module.exports = function Game() {
             purses[currentPlayer] +
             " Gold Coins."
         );
-
-        let winner = theCurrentPlayerDidNotWin();
-        return winner;
-      } else {
-        return true;
       }
     } else {
       log("Answer was correct!!!!");
@@ -143,11 +138,6 @@ module.exports = function Game() {
           purses[currentPlayer] +
           " Gold Coins."
       );
-
-      let winner = theCurrentPlayerDidNotWin();
-
-
-      return winner;
     }
   };
 
@@ -155,8 +145,6 @@ module.exports = function Game() {
     log("Question was incorrectly answered");
     log(players[currentPlayer] + " was sent to the penalty box");
     inPenaltyBox[currentPlayer] = true;
-
-    return true;
   };
 };
 

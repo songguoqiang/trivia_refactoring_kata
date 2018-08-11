@@ -14,9 +14,11 @@ module.exports = function runGame(random) {
     game.roll(Math.floor(random() * 6) + 1);
 
     if (Math.floor(random() * 10) == 7) {
-      nobodyWins = game.wrongAnswer();
+      game.wrongAnswer();
+      nobodyWins = true;
     } else {
-      nobodyWins = game.wasCorrectlyAnswered();
+      game.wasCorrectlyAnswered();
+      nobodyWins = game.theCurrentPlayerDidNotWin();
     }
     game.nextPlayer();
   } while (nobodyWins);
