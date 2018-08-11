@@ -116,28 +116,24 @@ module.exports = function Game() {
     }
   };
 
+  function awardOneCoinToCurrentPlayer() {
+    purses[currentPlayer] += 1;
+    log(
+      players[currentPlayer] +
+        " now has " +
+        purses[currentPlayer] +
+        " Gold Coins."
+    );
+  }
   this.currentUserAnsweredCorrectly = function() {
     if (inPenaltyBox[currentPlayer]) {
       if (isGettingOutOfPenaltyBox) {
         log("Answer was correct!!!!");
-        purses[currentPlayer] += 1;
-        log(
-          players[currentPlayer] +
-            " now has " +
-            purses[currentPlayer] +
-            " Gold Coins."
-        );
+        awardOneCoinToCurrentPlayer();
       }
     } else {
       log("Answer was correct!!!!");
-
-      purses[currentPlayer] += 1;
-      log(
-        players[currentPlayer] +
-          " now has " +
-          purses[currentPlayer] +
-          " Gold Coins."
-      );
+      awardOneCoinToCurrentPlayer();
     }
   };
 
