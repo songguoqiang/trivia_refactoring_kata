@@ -17,7 +17,7 @@ module.exports = function Game() {
     if (currentPlayer == players.length) currentPlayer = 0;
   };
 
-  const didPlayerWin = function() {
+  const theCurrentPlayerDidNotWin = function() {
     return !(purses[currentPlayer] == 6);
   };
 
@@ -128,7 +128,7 @@ module.exports = function Game() {
             " Gold Coins."
         );
 
-        let winner = didPlayerWin();
+        let winner = theCurrentPlayerDidNotWin();
         return winner;
       } else {
         return true;
@@ -144,7 +144,7 @@ module.exports = function Game() {
           " Gold Coins."
       );
 
-      let winner = didPlayerWin();
+      let winner = theCurrentPlayerDidNotWin();
 
 
       return winner;
