@@ -23,6 +23,7 @@ function GameRunner(random) {
     } else {
       nobodyWins = game.wasCorrectlyAnswered();
     }
+    game.nextPlayer();
   } while (nobodyWins);
 }
 

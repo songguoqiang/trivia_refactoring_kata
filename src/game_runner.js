@@ -16,4 +16,5 @@ do {
   } else {
     nobodyWins = game.wasCorrectlyAnswered();
   }
+  game.nextPlayer();
 } while (nobodyWins);

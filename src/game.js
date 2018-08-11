@@ -12,10 +12,10 @@ module.exports = function Game() {
   let currentPlayer = 0;
   let isGettingOutOfPenaltyBox = false;
 
-  function nextPlayer() {
+  this.nextPlayer = function() {
     currentPlayer += 1;
     if (currentPlayer == players.length) currentPlayer = 0;
-  }
+  };
 
   const didPlayerWin = function() {
     return !(purses[currentPlayer] == 6);
@@ -129,10 +129,8 @@ module.exports = function Game() {
         );
 
         let winner = didPlayerWin();
-        nextPlayer();
         return winner;
       } else {
-        nextPlayer();
         return true;
       }
     } else {
@@ -148,7 +146,6 @@ module.exports = function Game() {
 
       let winner = didPlayerWin();
 
-      nextPlayer();
 
       return winner;
     }
@@ -159,7 +156,6 @@ module.exports = function Game() {
     log(players[currentPlayer] + " was sent to the penalty box");
     inPenaltyBox[currentPlayer] = true;
 
-    nextPlayer();
     return true;
   };
 };
