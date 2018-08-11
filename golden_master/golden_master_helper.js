@@ -7,7 +7,7 @@ const fs = require("fs");
 // repeatedly generate same test cases.
 function GameRunner(random) {
   random = random || Math.random;
-  var notAWinner = false;
+  var nobodyWins = false;
 
   var game = new Game();
 
@@ -19,11 +19,11 @@ function GameRunner(random) {
     game.roll(Math.floor(random() * 6) + 1);
 
     if (Math.floor(random() * 10) == 7) {
-      notAWinner = game.wrongAnswer();
+      nobodyWins = game.wrongAnswer();
     } else {
-      notAWinner = game.wasCorrectlyAnswered();
+      nobodyWins = game.wasCorrectlyAnswered();
     }
-  } while (notAWinner);
+  } while (nobodyWins);
 }
 
 // We need to control the random number generation function

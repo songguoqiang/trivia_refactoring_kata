@@ -1,6 +1,6 @@
 var Game = require("./game");
 
-var notAWinner = false;
+var nobodyWins = false;
 
 var game = new Game();
 
@@ -12,8 +12,8 @@ do {
   game.roll(Math.floor(Math.random() * 6) + 1);
 
   if (Math.floor(Math.random() * 10) == 7) {
-    notAWinner = game.wrongAnswer();
+    nobodyWins = game.wrongAnswer();
   } else {
-    notAWinner = game.wasCorrectlyAnswered();
+    nobodyWins = game.wasCorrectlyAnswered();
   }
-} while (notAWinner);
+} while (nobodyWins);
