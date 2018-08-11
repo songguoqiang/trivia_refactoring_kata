@@ -1,31 +1,5 @@
-const Game = require("../src/game");
+const GameRunner = require("../src/game_runner");
 const fs = require("fs");
-
-// This GameRunner is almost same as the original version in
-// game_runner.js, except that we introduce a new parameter here
-// to control the random number generator, so that we can
-// repeatedly generate same test cases.
-function GameRunner(random) {
-  random = random || Math.random;
-  var nobodyWins = false;
-
-  var game = new Game();
-
-  game.add("Chet");
-  game.add("Pat");
-  game.add("Sue");
-
-  do {
-    game.roll(Math.floor(random() * 6) + 1);
-
-    if (Math.floor(random() * 10) == 7) {
-      nobodyWins = game.wrongAnswer();
-    } else {
-      nobodyWins = game.wasCorrectlyAnswered();
-    }
-    game.nextPlayer();
-  } while (nobodyWins);
-}
 
 // We need to control the random number generation function
 // so that we can generate the same sequences of numbers for a given
