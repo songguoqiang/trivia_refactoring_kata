@@ -16,17 +16,22 @@ module.exports = function Game() {
     return !(purses[currentPlayer] == 6);
   };
 
+  const POP_CATEGORY = "Pop";
+  const SCIENCE_CATEGORY = "Science";
+  const SPORTS_CATEGORY = "Sports";
+  const ROCK_CATEGORY = "Rock";
+
   const currentCategory = function() {
-    if (places[currentPlayer] == 0) return "Pop";
-    if (places[currentPlayer] == 4) return "Pop";
-    if (places[currentPlayer] == 8) return "Pop";
-    if (places[currentPlayer] == 1) return "Science";
-    if (places[currentPlayer] == 5) return "Science";
-    if (places[currentPlayer] == 9) return "Science";
-    if (places[currentPlayer] == 2) return "Sports";
-    if (places[currentPlayer] == 6) return "Sports";
-    if (places[currentPlayer] == 10) return "Sports";
-    return "Rock";
+    if (places[currentPlayer] == 0) return POP_CATEGORY;
+    if (places[currentPlayer] == 4) return POP_CATEGORY;
+    if (places[currentPlayer] == 8) return POP_CATEGORY;
+    if (places[currentPlayer] == 1) return SCIENCE_CATEGORY;
+    if (places[currentPlayer] == 5) return SCIENCE_CATEGORY;
+    if (places[currentPlayer] == 9) return SCIENCE_CATEGORY;
+    if (places[currentPlayer] == 2) return SPORTS_CATEGORY;
+    if (places[currentPlayer] == 6) return SPORTS_CATEGORY;
+    if (places[currentPlayer] == 10) return SPORTS_CATEGORY;
+    return ROCK_CATEGORY;
   };
 
   this.createRockQuestion = function(index) {
@@ -61,10 +66,10 @@ module.exports = function Game() {
   };
 
   const askQuestion = function() {
-    if (currentCategory() == "Pop") log(popQuestions.shift());
-    if (currentCategory() == "Science") log(scienceQuestions.shift());
-    if (currentCategory() == "Sports") log(sportsQuestions.shift());
-    if (currentCategory() == "Rock") log(rockQuestions.shift());
+    if (currentCategory() == POP_CATEGORY) log(popQuestions.shift());
+    if (currentCategory() == SCIENCE_CATEGORY) log(scienceQuestions.shift());
+    if (currentCategory() == SPORTS_CATEGORY) log(sportsQuestions.shift());
+    if (currentCategory() == ROCK_CATEGORY) log(rockQuestions.shift());
   };
 
   this.roll = function(roll) {
