@@ -50,8 +50,8 @@ module.exports = function Game() {
     purses[this.howManyPlayers() - 1] = 0;
     inPenaltyBox[this.howManyPlayers() - 1] = false;
 
-    console.log(playerName + " was added");
-    console.log("They are player number " + players.length);
+    log(playerName + " was added");
+    log("They are player number " + players.length);
 
     return true;
   };
@@ -61,37 +61,33 @@ module.exports = function Game() {
   };
 
   const askQuestion = function() {
-    if (currentCategory() == "Pop") console.log(popQuestions.shift());
-    if (currentCategory() == "Science") console.log(scienceQuestions.shift());
-    if (currentCategory() == "Sports") console.log(sportsQuestions.shift());
-    if (currentCategory() == "Rock") console.log(rockQuestions.shift());
+    if (currentCategory() == "Pop") log(popQuestions.shift());
+    if (currentCategory() == "Science") log(scienceQuestions.shift());
+    if (currentCategory() == "Sports") log(sportsQuestions.shift());
+    if (currentCategory() == "Rock") log(rockQuestions.shift());
   };
 
   this.roll = function(roll) {
-    console.log(players[currentPlayer] + " is the current player");
-    console.log("They have rolled a " + roll);
+    log(players[currentPlayer] + " is the current player");
+    log("They have rolled a " + roll);
 
     if (inPenaltyBox[currentPlayer]) {
       if (roll % 2 != 0) {
         isGettingOutOfPenaltyBox = true;
 
-        console.log(
-          players[currentPlayer] + " is getting out of the penalty box"
-        );
+        log(players[currentPlayer] + " is getting out of the penalty box");
         places[currentPlayer] = places[currentPlayer] + roll;
         if (places[currentPlayer] > 11) {
           places[currentPlayer] = places[currentPlayer] - 12;
         }
 
-        console.log(
+        log(
           players[currentPlayer] + "'s new location is " + places[currentPlayer]
         );
-        console.log("The category is " + currentCategory());
+        log("The category is " + currentCategory());
         askQuestion();
       } else {
-        console.log(
-          players[currentPlayer] + " is not getting out of the penalty box"
-        );
+        log(players[currentPlayer] + " is not getting out of the penalty box");
         isGettingOutOfPenaltyBox = false;
       }
     } else {
@@ -100,10 +96,10 @@ module.exports = function Game() {
         places[currentPlayer] = places[currentPlayer] - 12;
       }
 
-      console.log(
+      log(
         players[currentPlayer] + "'s new location is " + places[currentPlayer]
       );
-      console.log("The category is " + currentCategory());
+      log("The category is " + currentCategory());
       askQuestion();
     }
   };
@@ -111,9 +107,9 @@ module.exports = function Game() {
   this.wasCorrectlyAnswered = function() {
     if (inPenaltyBox[currentPlayer]) {
       if (isGettingOutOfPenaltyBox) {
-        console.log("Answer was correct!!!!");
+        log("Answer was correct!!!!");
         purses[currentPlayer] += 1;
-        console.log(
+        log(
           players[currentPlayer] +
             " now has " +
             purses[currentPlayer] +
@@ -131,10 +127,10 @@ module.exports = function Game() {
         return true;
       }
     } else {
-      console.log("Answer was correct!!!!");
+      log("Answer was correct!!!!");
 
       purses[currentPlayer] += 1;
-      console.log(
+      log(
         players[currentPlayer] +
           " now has " +
           purses[currentPlayer] +
@@ -151,8 +147,8 @@ module.exports = function Game() {
   };
 
   this.wrongAnswer = function() {
-    console.log("Question was incorrectly answered");
-    console.log(players[currentPlayer] + " was sent to the penalty box");
+    log("Question was incorrectly answered");
+    log(players[currentPlayer] + " was sent to the penalty box");
     inPenaltyBox[currentPlayer] = true;
 
     currentPlayer += 1;
@@ -160,3 +156,8 @@ module.exports = function Game() {
     return true;
   };
 };
+
+function log(output) {
+  // eslint-disable-next-line no-console
+  console.log(output);
+}
