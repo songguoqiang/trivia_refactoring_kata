@@ -22,15 +22,17 @@ module.exports = function Game() {
   const ROCK_CATEGORY = "Rock";
 
   const currentCategory = function() {
-    if (places[currentPlayer] == 0) return POP_CATEGORY;
-    if (places[currentPlayer] == 4) return POP_CATEGORY;
-    if (places[currentPlayer] == 8) return POP_CATEGORY;
-    if (places[currentPlayer] == 1) return SCIENCE_CATEGORY;
-    if (places[currentPlayer] == 5) return SCIENCE_CATEGORY;
-    if (places[currentPlayer] == 9) return SCIENCE_CATEGORY;
-    if (places[currentPlayer] == 2) return SPORTS_CATEGORY;
-    if (places[currentPlayer] == 6) return SPORTS_CATEGORY;
-    if (places[currentPlayer] == 10) return SPORTS_CATEGORY;
+    const PLACES_FOR_POP_CATEGORY = [0, 4, 8];
+    const PLACES_FOR_SCIENCE_CATEGORY = [1, 5, 9];
+    const PLACES_FOR_SPORTS_CATEGORY = [2, 6, 10];
+
+    const currentPlace = places[currentPlayer];
+
+    if (PLACES_FOR_POP_CATEGORY.includes(currentPlace)) return POP_CATEGORY;
+    if (PLACES_FOR_SCIENCE_CATEGORY.includes(currentPlace))
+      return SCIENCE_CATEGORY;
+    if (PLACES_FOR_SPORTS_CATEGORY.includes(currentPlace))
+      return SPORTS_CATEGORY;
     return ROCK_CATEGORY;
   };
 
