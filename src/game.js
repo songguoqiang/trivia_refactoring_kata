@@ -125,16 +125,13 @@ module.exports = function Game() {
         " Gold Coins."
     );
   }
+
   this.currentUserAnsweredCorrectly = function() {
-    if (inPenaltyBox[currentPlayer]) {
-      if (isGettingOutOfPenaltyBox) {
-        log("Answer was correct!!!!");
-        awardOneCoinToCurrentPlayer();
-      }
-    } else {
-      log("Answer was correct!!!!");
-      awardOneCoinToCurrentPlayer();
+    if (inPenaltyBox[currentPlayer] && !isGettingOutOfPenaltyBox) {
+      return;
     }
+    log("Answer was correct!!!!");
+    awardOneCoinToCurrentPlayer();
   };
 
   this.currentPlayerAnsweredWrongly = function() {
