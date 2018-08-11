@@ -3,13 +3,12 @@ var Game = require("./game");
 module.exports = function runGame(random) {
   random = random || Math.random;
 
-  var game = new Game();
-
+  let game = new Game();
   game.add("Chet");
   game.add("Pat");
   game.add("Sue");
 
-  var nobodyWins = false;
+  let nobodyWins = false;
   do {
     game.roll(Math.floor(random() * 6) + 1);
 
