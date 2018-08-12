@@ -95,18 +95,17 @@ module.exports = function Game() {
     if (inPenaltyBox[currentPlayer]) {
       if (roll % 2 != 0) {
         isGettingOutOfPenaltyBox = true;
-
         log(players[currentPlayer] + " is getting out of the penalty box");
-
-        advanceTheCurrentPlayer(roll);
-
-        log("The category is " + currentCategory());
-        askQuestion();
       } else {
         log(players[currentPlayer] + " is not getting out of the penalty box");
         isGettingOutOfPenaltyBox = false;
       }
-    } else {
+    }
+
+    const shouldTheCurrentPlayerAnswerQuestion =
+      !inPenaltyBox[currentPlayer] || isGettingOutOfPenaltyBox;
+
+    if (shouldTheCurrentPlayerAnswerQuestion) {
       advanceTheCurrentPlayer(roll);
       log("The category is " + currentCategory());
       askQuestion();
