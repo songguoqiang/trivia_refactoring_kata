@@ -62,8 +62,6 @@ module.exports = function Game() {
 
     log(playerName + " was added");
     log("They are player number " + players.length);
-
-    return true;
   };
 
   this.howManyPlayers = function() {
