@@ -2,7 +2,7 @@
   "name": "ugly_trivia_refactoring_kata",
   "version": "1.0.0",
   "description": "A project to practice refactoring on ugly trivia in Javascript",
-  "main": "src/game_runner.js",
+  "main": "src/main.js",
   "author": "songguoqiang <songguoq@gmail.com>",
   "license": "MIT",
   "scripts": {

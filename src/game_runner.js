@@ -1,19 +1,26 @@
 var Game = require("./game");
 
-var notAWinner = false;
+// This function is almost same as the original version in
+// the kata, except that we introduce a new parameter here
+// to control the random number generator, so that we can
+// repeatedly generate same test cases.
+module.exports = function runGame(random) {
+  random = random || Math.random;
+  var notAWinner = false;
 
-var game = new Game();
+  var game = new Game();
 
-game.add("Chet");
-game.add("Pat");
-game.add("Sue");
+  game.add("Chet");
+  game.add("Pat");
+  game.add("Sue");
 
-do {
-  game.roll(Math.floor(Math.random() * 6) + 1);
+  do {
+    game.roll(Math.floor(random() * 6) + 1);
 
-  if (Math.floor(Math.random() * 10) == 7) {
-    notAWinner = game.wrongAnswer();
-  } else {
-    notAWinner = game.wasCorrectlyAnswered();
-  }
-} while (notAWinner);
+    if (Math.floor(random() * 10) == 7) {
+      notAWinner = game.wrongAnswer();
+    } else {
+      notAWinner = game.wasCorrectlyAnswered();
+    }
+  } while (notAWinner);
+};
