@@ -79,6 +79,15 @@ module.exports = function Game() {
     if (currentCategory() == ROCK_CATEGORY) log(rockQuestions.shift());
   };
 
+  function advanceTheCurrentPlayer(roll) {
+    places[currentPlayer] = places[currentPlayer] + roll;
+    if (places[currentPlayer] > 11) {
+      places[currentPlayer] = places[currentPlayer] - 12;
+    }
+
+    log(players[currentPlayer] + "'s new location is " + places[currentPlayer]);
+  }
+
   this.roll = function(roll) {
     log(players[currentPlayer] + " is the current player");
     log("They have rolled a " + roll);
@@ -88,14 +97,9 @@ module.exports = function Game() {
         isGettingOutOfPenaltyBox = true;
 
         log(players[currentPlayer] + " is getting out of the penalty box");
-        places[currentPlayer] = places[currentPlayer] + roll;
-        if (places[currentPlayer] > 11) {
-          places[currentPlayer] = places[currentPlayer] - 12;
-        }
 
-        log(
-          players[currentPlayer] + "'s new location is " + places[currentPlayer]
-        );
+        advanceTheCurrentPlayer(roll);
+
         log("The category is " + currentCategory());
         askQuestion();
       } else {
@@ -103,14 +107,7 @@ module.exports = function Game() {
         isGettingOutOfPenaltyBox = false;
       }
     } else {
-      places[currentPlayer] = places[currentPlayer] + roll;
-      if (places[currentPlayer] > 11) {
-        places[currentPlayer] = places[currentPlayer] - 12;
-      }
-
-      log(
-        players[currentPlayer] + "'s new location is " + places[currentPlayer]
-      );
+      advanceTheCurrentPlayer(roll);
       log("The category is " + currentCategory());
       askQuestion();
     }
