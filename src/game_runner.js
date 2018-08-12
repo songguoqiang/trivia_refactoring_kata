@@ -8,6 +8,8 @@ module.exports = function runGame(random) {
   game.add("Pat");
   game.add("Sue");
 
+  game.initQuestionBank();
+
   let nobodyWins = false;
   do {
     const getNumberFromDice = Math.floor(random() * 6) + 1;
