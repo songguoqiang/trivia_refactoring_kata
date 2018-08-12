@@ -12,6 +12,10 @@ module.exports = function Game() {
   let currentPlayer = 0;
   let isGettingOutOfPenaltyBox = false;
 
+  const shouldTheCurrentPlayerAnswerQuestion = function() {
+    return !inPenaltyBox[currentPlayer] || isGettingOutOfPenaltyBox;
+  };
+
   this.nextPlayer = function() {
     currentPlayer += 1;
     if (currentPlayer == players.length) currentPlayer = 0;
@@ -103,10 +107,7 @@ module.exports = function Game() {
       tryToGetOutOfPenaltyBox(roll);
     }
 
-    const shouldTheCurrentPlayerAnswerQuestion =
-      !inPenaltyBox[currentPlayer] || isGettingOutOfPenaltyBox;
-
-    if (shouldTheCurrentPlayerAnswerQuestion) {
+    if (shouldTheCurrentPlayerAnswerQuestion()) {
       advanceTheCurrentPlayer(roll);
       log("The category is " + currentCategory());
       askQuestion();
@@ -124,7 +125,7 @@ module.exports = function Game() {
   }
 
   this.currentUserAnsweredCorrectly = function() {
-    if (inPenaltyBox[currentPlayer] && !isGettingOutOfPenaltyBox) {
+    if (!shouldTheCurrentPlayerAnswerQuestion()) {
       return;
     }
     log("Answer was correct!!!!");
