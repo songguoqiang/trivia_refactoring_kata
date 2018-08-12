@@ -132,10 +132,14 @@ module.exports = function Game() {
     awardOneCoinToCurrentPlayer();
   };
 
-  this.currentPlayerAnsweredWrongly = function() {
-    log("Question was incorrectly answered");
+  function putCurrentPlayerToPenaltyBox() {
     log(players[currentPlayer] + " was sent to the penalty box");
     inPenaltyBox[currentPlayer] = true;
+  }
+
+  this.currentPlayerAnsweredWrongly = function() {
+    log("Question was incorrectly answered");
+    putCurrentPlayerToPenaltyBox();
   };
 };
 
