@@ -12,9 +12,9 @@ module.exports = function Game() {
   let currentPlayer = 0;
   let isGettingOutOfPenaltyBox = false;
 
-  const shouldTheCurrentPlayerAnswerQuestion = function() {
+  function shouldTheCurrentPlayerAnswerQuestion() {
     return !inPenaltyBox[currentPlayer] || isGettingOutOfPenaltyBox;
-  };
+  }
 
   this.nextPlayer = function() {
     currentPlayer += 1;
