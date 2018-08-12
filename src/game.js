@@ -88,19 +88,23 @@ module.exports = function Game() {
     log(players[currentPlayer] + "'s new location is " + places[currentPlayer]);
   }
 
+  function tryToGetOutOfPenaltyBox(roll) {
+    const anOddNumberOnDice = roll % 2 != 0;
+    if (anOddNumberOnDice) {
+      isGettingOutOfPenaltyBox = true;
+      log(players[currentPlayer] + " is getting out of the penalty box");
+    } else {
+      log(players[currentPlayer] + " is not getting out of the penalty box");
+      isGettingOutOfPenaltyBox = false;
+    }
+  }
+
   this.roll = function(roll) {
     log(players[currentPlayer] + " is the current player");
     log("They have rolled a " + roll);
 
     if (inPenaltyBox[currentPlayer]) {
-      const anOddNumberOnDice = roll % 2 != 0;
-      if (anOddNumberOnDice) {
-        isGettingOutOfPenaltyBox = true;
-        log(players[currentPlayer] + " is getting out of the penalty box");
-      } else {
-        log(players[currentPlayer] + " is not getting out of the penalty box");
-        isGettingOutOfPenaltyBox = false;
-      }
+      tryToGetOutOfPenaltyBox(roll);
     }
 
     const shouldTheCurrentPlayerAnswerQuestion =
