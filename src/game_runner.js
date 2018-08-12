@@ -4,9 +4,9 @@ module.exports = function runGame(random) {
   random = random || Math.random;
 
   let game = new Game();
-  game.add("Chet");
-  game.add("Pat");
-  game.add("Sue");
+  game.addPlayer("Chet");
+  game.addPlayer("Pat");
+  game.addPlayer("Sue");
 
   game.initQuestionBank();
 
