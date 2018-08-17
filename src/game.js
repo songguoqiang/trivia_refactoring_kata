@@ -120,11 +120,11 @@ module.exports = function Game() {
             " Gold Coins."
         );
 
-        let winner = !didCurrentPlayerWin();
+        let noWinner = !didCurrentPlayerWin();
         currentPlayer += 1;
         if (currentPlayer == players.length) currentPlayer = 0;
 
-        return winner;
+        return noWinner;
       } else {
         currentPlayer += 1;
         if (currentPlayer == players.length) currentPlayer = 0;
@@ -141,12 +141,12 @@ module.exports = function Game() {
           " Gold Coins."
       );
 
-      let winner = !didCurrentPlayerWin();
+      let noWinner = !didCurrentPlayerWin();
 
       currentPlayer += 1;
       if (currentPlayer == players.length) currentPlayer = 0;
 
-      return winner;
+      return noWinner;
     }
   };
 
