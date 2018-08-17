@@ -4,10 +4,10 @@ module.exports = function Game() {
   const purses = [];
   const inPenaltyBox = [];
 
-  const popQuestions = new Array();
-  const scienceQuestions = new Array();
-  const sportsQuestions = new Array();
-  const rockQuestions = new Array();
+  const popQuestions = [];
+  const scienceQuestions = [];
+  const sportsQuestions = [];
+  const rockQuestions = [];
 
   let currentPlayer = 0;
   let isGettingOutOfPenaltyBox = false;
