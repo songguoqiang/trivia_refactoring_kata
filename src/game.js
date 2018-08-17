@@ -13,7 +13,7 @@ module.exports = function Game() {
   let isGettingOutOfPenaltyBox = false;
 
   const didCurrentPlayerWin = function() {
-    return !(purses[currentPlayer] == 6);
+    return purses[currentPlayer] == 6;
   };
 
   const currentCategory = function() {
@@ -120,7 +120,7 @@ module.exports = function Game() {
             " Gold Coins."
         );
 
-        let winner = didCurrentPlayerWin();
+        let winner = !didCurrentPlayerWin();
         currentPlayer += 1;
         if (currentPlayer == players.length) currentPlayer = 0;
 
@@ -141,7 +141,7 @@ module.exports = function Game() {
           " Gold Coins."
       );
 
-      let winner = didCurrentPlayerWin();
+      let winner = !didCurrentPlayerWin();
 
       currentPlayer += 1;
       if (currentPlayer == players.length) currentPlayer = 0;
