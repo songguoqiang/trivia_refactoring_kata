@@ -1,22 +1,22 @@
 module.exports = function Game() {
-  var players = new Array();
-  var places = new Array(6);
-  var purses = new Array(6);
-  var inPenaltyBox = new Array(6);
+  const players = new Array();
+  const places = new Array(6);
+  const purses = new Array(6);
+  const inPenaltyBox = new Array(6);
 
-  var popQuestions = new Array();
-  var scienceQuestions = new Array();
-  var sportsQuestions = new Array();
-  var rockQuestions = new Array();
+  const popQuestions = new Array();
+  const scienceQuestions = new Array();
+  const sportsQuestions = new Array();
+  const rockQuestions = new Array();
 
-  var currentPlayer = 0;
-  var isGettingOutOfPenaltyBox = false;
+  let currentPlayer = 0;
+  let isGettingOutOfPenaltyBox = false;
 
-  var didPlayerWin = function() {
+  const didPlayerWin = function() {
     return !(purses[currentPlayer] == 6);
   };
 
-  var currentCategory = function() {
+  const currentCategory = function() {
     if (places[currentPlayer] == 0) return "Pop";
     if (places[currentPlayer] == 4) return "Pop";
     if (places[currentPlayer] == 8) return "Pop";
@@ -33,7 +33,7 @@ module.exports = function Game() {
     return "Rock Question " + index;
   };
 
-  for (var i = 0; i < 50; i++) {
+  for (let i = 0; i < 50; i++) {
     popQuestions.push("Pop Question " + i);
     scienceQuestions.push("Science Question " + i);
     sportsQuestions.push("Sports Question " + i);
@@ -60,7 +60,7 @@ module.exports = function Game() {
     return players.length;
   };
 
-  var askQuestion = function() {
+  const askQuestion = function() {
     if (currentCategory() == "Pop") console.log(popQuestions.shift());
     if (currentCategory() == "Science") console.log(scienceQuestions.shift());
     if (currentCategory() == "Sports") console.log(sportsQuestions.shift());
@@ -120,7 +120,7 @@ module.exports = function Game() {
             " Gold Coins."
         );
 
-        var winner = didPlayerWin();
+        let winner = didPlayerWin();
         currentPlayer += 1;
         if (currentPlayer == players.length) currentPlayer = 0;
 
@@ -141,7 +141,7 @@ module.exports = function Game() {
           " Gold Coins."
       );
 
-      var winner = didPlayerWin();
+      let winner = didPlayerWin();
 
       currentPlayer += 1;
       if (currentPlayer == players.length) currentPlayer = 0;
