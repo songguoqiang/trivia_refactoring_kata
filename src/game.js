@@ -25,6 +25,7 @@ module.exports = function Game() {
   const PLACES_FOR_SCIENCE_QUESTIONS = [1, 5, 9];
   const PLACES_FOR_SPORTS_QUESTIONS = [2, 6, 10];
 
+  // TODO: this is only used in logging, remove it later when we don't need the log anymore
   function currentCategory() {
     const currentPlace = places[currentPlayer];
     if (PLACES_FOR_POP_QUESTIONS.includes(currentPlace)) {
@@ -39,6 +40,20 @@ module.exports = function Game() {
     return ROCK_CATEGORY;
   }
 
+  function selectQuestionByCategory() {
+    const currentPlace = places[currentPlayer];
+    if (PLACES_FOR_POP_QUESTIONS.includes(currentPlace)) {
+      return popQuestions;
+    }
+    if (PLACES_FOR_SCIENCE_QUESTIONS.includes(currentPlace)) {
+      return scienceQuestions;
+    }
+    if (PLACES_FOR_SPORTS_QUESTIONS.includes(currentPlace)) {
+      return sportsQuestions;
+    }
+    return rockQuestions;
+  }
+
   this.initQuestionBank = function() {
     for (let i = 0; i < 50; i++) {
       popQuestions.push("Pop Question " + i);
@@ -47,6 +62,12 @@ module.exports = function Game() {
       rockQuestions.push("Rock Question " + i);
     }
   };
+
+  function askQuestion() {
+    const questions = selectQuestionByCategory();
+    // TODO: handle the case when here is no more questions left
+    log(questions.shift());
+  }
 
   this.addPlayer = function(playerName) {
     const playersCount = players.push(playerName);
@@ -58,13 +79,6 @@ module.exports = function Game() {
     log("They are player number " + players.length);
 
     return true;
-  };
-
-  const askQuestion = function() {
-    if (currentCategory() == POP_CATEGORY) log(popQuestions.shift());
-    if (currentCategory() == SCIENCE_CATEGORY) log(scienceQuestions.shift());
-    if (currentCategory() == SPORTS_CATEGORY) log(sportsQuestions.shift());
-    if (currentCategory() == ROCK_CATEGORY) log(rockQuestions.shift());
   };
 
   this.roll = function(roll) {
