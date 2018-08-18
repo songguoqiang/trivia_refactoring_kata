@@ -21,17 +21,21 @@ module.exports = function Game() {
   const SPORTS_CATEGORY = "Sports";
   const ROCK_CATEGORY = "Rock";
 
+  const PLACES_FOR_POP_QUESTIONS = [0, 4, 8];
+  const PLACES_FOR_SCIENCE_QUESTIONS = [1, 5, 9];
+  const PLACES_FOR_SPORTS_QUESTIONS = [2, 6, 10];
+
   const currentCategory = function() {
     const currentPlace = places[currentPlayer];
-    if (currentPlace == 0) return POP_CATEGORY;
-    if (currentPlace == 4) return POP_CATEGORY;
-    if (currentPlace == 8) return POP_CATEGORY;
-    if (currentPlace == 1) return SCIENCE_CATEGORY;
-    if (currentPlace == 5) return SCIENCE_CATEGORY;
-    if (currentPlace == 9) return SCIENCE_CATEGORY;
-    if (currentPlace == 2) return SPORTS_CATEGORY;
-    if (currentPlace == 6) return SPORTS_CATEGORY;
-    if (currentPlace == 10) return SPORTS_CATEGORY;
+    if (PLACES_FOR_POP_QUESTIONS.includes(currentPlace)) {
+      return POP_CATEGORY;
+    }
+    if (PLACES_FOR_SCIENCE_QUESTIONS.includes(currentPlace)) {
+      return SCIENCE_CATEGORY;
+    }
+    if (PLACES_FOR_SPORTS_QUESTIONS.includes(currentPlace)) {
+      return SPORTS_CATEGORY;
+    }
     return ROCK_CATEGORY;
   };
 
@@ -68,8 +72,10 @@ module.exports = function Game() {
 
   const askQuestion = function() {
     if (currentCategory() == POP_CATEGORY) console.log(popQuestions.shift());
-    if (currentCategory() == SCIENCE_CATEGORY) console.log(scienceQuestions.shift());
-    if (currentCategory() == SPORTS_CATEGORY) console.log(sportsQuestions.shift());
+    if (currentCategory() == SCIENCE_CATEGORY)
+      console.log(scienceQuestions.shift());
+    if (currentCategory() == SPORTS_CATEGORY)
+      console.log(sportsQuestions.shift());
     if (currentCategory() == ROCK_CATEGORY) console.log(rockQuestions.shift());
   };
 
