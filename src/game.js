@@ -25,7 +25,7 @@ module.exports = function Game() {
   const PLACES_FOR_SCIENCE_QUESTIONS = [1, 5, 9];
   const PLACES_FOR_SPORTS_QUESTIONS = [2, 6, 10];
 
-  const currentCategory = function() {
+  function currentCategory() {
     const currentPlace = places[currentPlayer];
     if (PLACES_FOR_POP_QUESTIONS.includes(currentPlace)) {
       return POP_CATEGORY;
@@ -37,7 +37,7 @@ module.exports = function Game() {
       return SPORTS_CATEGORY;
     }
     return ROCK_CATEGORY;
-  };
+  }
 
   this.createRockQuestion = function(index) {
     return "Rock Question " + index;
