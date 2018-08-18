@@ -81,6 +81,16 @@ module.exports = function Game() {
     return true;
   };
 
+  function movePlayer(roll) {
+    const NUMBER_OF_PLACES = 12;
+    places[currentPlayer] = places[currentPlayer] + roll;
+    if (places[currentPlayer] > NUMBER_OF_PLACES - 1) {
+      places[currentPlayer] = places[currentPlayer] - NUMBER_OF_PLACES;
+    }
+
+    log(players[currentPlayer] + "'s new location is " + places[currentPlayer]);
+  }
+
   this.roll = function(roll) {
     log(players[currentPlayer] + " is the current player");
     log("They have rolled a " + roll);
@@ -91,14 +101,9 @@ module.exports = function Game() {
         isGettingOutOfPenaltyBox = true;
 
         log(players[currentPlayer] + " is getting out of the penalty box");
-        places[currentPlayer] = places[currentPlayer] + roll;
-        if (places[currentPlayer] > 11) {
-          places[currentPlayer] = places[currentPlayer] - 12;
-        }
 
-        log(
-          players[currentPlayer] + "'s new location is " + places[currentPlayer]
-        );
+        movePlayer(roll);
+
         log("The category is " + currentCategory());
         askQuestion();
       } else {
@@ -106,14 +111,7 @@ module.exports = function Game() {
         isGettingOutOfPenaltyBox = false;
       }
     } else {
-      places[currentPlayer] = places[currentPlayer] + roll;
-      if (places[currentPlayer] > 11) {
-        places[currentPlayer] = places[currentPlayer] - 12;
-      }
-
-      log(
-        players[currentPlayer] + "'s new location is " + places[currentPlayer]
-      );
+      movePlayer(roll);
       log("The category is " + currentCategory());
       askQuestion();
     }
