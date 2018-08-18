@@ -48,7 +48,7 @@ module.exports = function Game() {
     }
   };
 
-  this.add = function(playerName) {
+  this.addPlayer = function(playerName) {
     players.push(playerName);
     places[this.howManyPlayers() - 1] = 0;
     purses[this.howManyPlayers() - 1] = 0;
