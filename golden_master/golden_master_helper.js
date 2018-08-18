@@ -27,7 +27,7 @@ function deleteExistingFile(fileName) {
 function redirectConsoleLogToFile(fileName) {
   // eslint-disable-next-line no-console
   console.log = function(str) {
-    fs.appendFileSync(fileName, str + "\r\n");
+    fs.appendFileSync(fileName, str + "\n");
   };
 }
 
