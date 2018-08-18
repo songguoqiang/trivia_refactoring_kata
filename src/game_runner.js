@@ -14,6 +14,8 @@ module.exports = function runGame(random) {
   game.add("Pat");
   game.add("Sue");
 
+  game.initQuestionBank();
+
   do {
     game.roll(Math.floor(random() * 6) + 1);
 

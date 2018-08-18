@@ -39,12 +39,14 @@ module.exports = function Game() {
     return ROCK_CATEGORY;
   }
 
-  for (let i = 0; i < 50; i++) {
-    popQuestions.push("Pop Question " + i);
-    scienceQuestions.push("Science Question " + i);
-    sportsQuestions.push("Sports Question " + i);
-    rockQuestions.push("Rock Question " + i);
-  }
+  this.initQuestionBank = function() {
+    for (let i = 0; i < 50; i++) {
+      popQuestions.push("Pop Question " + i);
+      scienceQuestions.push("Science Question " + i);
+      sportsQuestions.push("Sports Question " + i);
+      rockQuestions.push("Rock Question " + i);
+    }
+  };
 
   this.isPlayable = function(howManyPlayers) {
     return howManyPlayers >= 2;
