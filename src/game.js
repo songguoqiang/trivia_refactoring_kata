@@ -1,13 +1,13 @@
 module.exports = function Game() {
-  var players = new Array();
-  var places = new Array(6);
-  var purses = new Array(6);
-  var inPenaltyBox = new Array(6);
+  var players = [];
+  var places = [];
+  var purses = [];
+  var inPenaltyBox = [];
 
-  var popQuestions = new Array();
-  var scienceQuestions = new Array();
-  var sportsQuestions = new Array();
-  var rockQuestions = new Array();
+  var popQuestions = [];
+  var scienceQuestions = [];
+  var sportsQuestions = [];
+  var rockQuestions = [];
 
   const POP_CATEGORY = "Pop";
   const SCIENCE_CATEGORY = "Science";
