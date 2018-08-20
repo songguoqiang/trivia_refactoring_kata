@@ -41,10 +41,6 @@ module.exports = function Game() {
     rockQuestions.push("Rock Question " + i);
   }
 
-  this.isPlayable = function(howManyPlayers) {
-    return howManyPlayers >= 2;
-  };
-
   this.add = function(playerName) {
     players.push(playerName);
     places[this.howManyPlayers() - 1] = 0;
