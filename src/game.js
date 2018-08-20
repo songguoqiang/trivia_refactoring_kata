@@ -67,7 +67,8 @@ module.exports = function Game() {
     log("They have rolled a " + roll);
 
     if (inPenaltyBox[currentPlayer]) {
-      if (roll % 2 != 0) {
+      const isOddNumber = roll % 2 != 0;
+      if (isOddNumber) {
         isGettingOutOfPenaltyBox = true;
 
         log(players[currentPlayer] + " is getting out of the penalty box");
