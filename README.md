@@ -4,7 +4,7 @@
 
 Run `yarn install` to install required project dependencies
 
-Run `node src\main.js` to run the game and output would be displayed on the console.
+Run `node src/main.js` to run the game and output would be displayed on the console.
 
 Run `yarn test` to run the Golden Master Tests.
 
