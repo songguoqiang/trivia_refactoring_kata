@@ -33,7 +33,8 @@ module.exports = function Game() {
   const isScienceCategory = currentPlace => currentPlace % 4 === 1;
   const isSportsCategory = currentPlace => currentPlace % 4 === 2;
 
-  for (var i = 0; i < 50; i++) {
+  const NUM_OF_QUESTION = 50;
+  for (var i = 0; i < NUM_OF_QUESTION; i++) {
     popQuestions.push("Pop Question " + i);
     scienceQuestions.push("Science Question " + i);
     sportsQuestions.push("Sports Question " + i);
