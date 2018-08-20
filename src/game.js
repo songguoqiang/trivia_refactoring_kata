@@ -1,27 +1,27 @@
 module.exports = function Game() {
-  var players = [];
-  var places = [];
-  var purses = [];
-  var inPenaltyBox = [];
+  const players = [];
+  const places = [];
+  const purses = [];
+  const inPenaltyBox = [];
 
-  var popQuestions = [];
-  var scienceQuestions = [];
-  var sportsQuestions = [];
-  var rockQuestions = [];
+  const popQuestions = [];
+  const scienceQuestions = [];
+  const sportsQuestions = [];
+  const rockQuestions = [];
 
   const POP_CATEGORY = "Pop";
   const SCIENCE_CATEGORY = "Science";
   const SPORTS_CATEGORY = "Sports";
   const ROCK_CATEGORY = "Rock";
 
-  var currentPlayer = 0;
-  var isGettingOutOfPenaltyBox = false;
+  let currentPlayer = 0;
+  let isGettingOutOfPenaltyBox = false;
 
-  var didPlayerWin = function() {
+  const didPlayerWin = function() {
     return !(purses[currentPlayer] == 6);
   };
 
-  var currentCategory = function() {
+  const currentCategory = function() {
     const currentPlace = places[currentPlayer];
     if (isPopCategory(currentPlace)) return POP_CATEGORY;
     if (isScienceCategory(currentPlace)) return SCIENCE_CATEGORY;
@@ -34,7 +34,7 @@ module.exports = function Game() {
   const isSportsCategory = currentPlace => currentPlace % 4 === 2;
 
   const NUM_OF_QUESTION = 50;
-  for (var i = 0; i < NUM_OF_QUESTION; i++) {
+  for (let i = 0; i < NUM_OF_QUESTION; i++) {
     popQuestions.push("Pop Question " + i);
     scienceQuestions.push("Science Question " + i);
     sportsQuestions.push("Sports Question " + i);
@@ -55,7 +55,7 @@ module.exports = function Game() {
     return true;
   };
 
-  var askQuestion = function() {
+  const askQuestion = function() {
     if (currentCategory() == POP_CATEGORY) log(popQuestions.shift());
     if (currentCategory() == SCIENCE_CATEGORY) log(scienceQuestions.shift());
     if (currentCategory() == SPORTS_CATEGORY) log(sportsQuestions.shift());
@@ -112,7 +112,7 @@ module.exports = function Game() {
             " Gold Coins."
         );
 
-        var winner = didPlayerWin();
+        const winner = didPlayerWin();
         currentPlayer += 1;
         if (currentPlayer == players.length) currentPlayer = 0;
 
@@ -133,7 +133,7 @@ module.exports = function Game() {
           " Gold Coins."
       );
 
-      var winner = didPlayerWin();
+      const winner = didPlayerWin();
 
       currentPlayer += 1;
       if (currentPlayer == players.length) currentPlayer = 0;
