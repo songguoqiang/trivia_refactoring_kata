@@ -61,7 +61,7 @@ module.exports = function Game() {
     if (currentCategory() == SPORTS_CATEGORY) log(sportsQuestions.shift());
     if (currentCategory() == ROCK_CATEGORY) log(rockQuestions.shift());
   };
-
+  const NUM_OF_PLACE = 12;
   this.roll = function(roll) {
     log(players[currentPlayer] + " is the current player");
     log("They have rolled a " + roll);
@@ -73,8 +73,8 @@ module.exports = function Game() {
 
         log(players[currentPlayer] + " is getting out of the penalty box");
         places[currentPlayer] = places[currentPlayer] + roll;
-        if (places[currentPlayer] > 11) {
-          places[currentPlayer] = places[currentPlayer] - 12;
+        if (places[currentPlayer] > NUM_OF_PLACE - 1) {
+          places[currentPlayer] = places[currentPlayer] - NUM_OF_PLACE;
         }
 
         log(
@@ -88,8 +88,8 @@ module.exports = function Game() {
       }
     } else {
       places[currentPlayer] = places[currentPlayer] + roll;
-      if (places[currentPlayer] > 11) {
-        places[currentPlayer] = places[currentPlayer] - 12;
+      if (places[currentPlayer] > NUM_OF_PLACE - 1) {
+        places[currentPlayer] = places[currentPlayer] - NUM_OF_PLACE;
       }
 
       log(
